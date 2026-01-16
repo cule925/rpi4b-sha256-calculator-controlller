@@ -1,24 +1,16 @@
 import os
 import hashlib
-from enum import IntEnum
-from app_defines import WORKER_COUNT
 
 SHA256_DIGEST_MASK = 15
 
-# Set input offsets for each worker
-class InputOffset(IntEnum):
-    INPUT_OFFSET_1 = 0x00000000
-    INPUT_OFFSET_2 = 0x00010000
-
-assert len(InputOffset) == WORKER_COUNT
-
 class Hasher():
 
-    def __init__(self):
+    def __init__(self, devices):
+        self.devices = devices
         self.mask = SHA256_DIGEST_MASK
 
-        # Get tuple of all input offset enum values
-        self.input_offsets = tuple(e.value for e in InputOffset)
+        # Get tuple of all input offsets from devices
+        self.input_offsets = tuple(device.input_offset for device in self.devices)
 
         print("Hasher initialized!")
 

@@ -1,5 +1,4 @@
 import time
-from app_defines import WORKER_COUNT
 from app_manager import AppManager
 
 def puzzle_generator_thread(app_manager: AppManager):
@@ -18,7 +17,7 @@ def puzzle_generator_thread(app_manager: AppManager):
         print(f"Mask: {mask}")
 
         # Send the inputs of the puzzle
-        for device_index in range(WORKER_COUNT):
+        for device_index in range(len(app_manager.config.devices)):
             offset = app_manager.hasher.get_input_offset(device_index)
 
             # Create byte array

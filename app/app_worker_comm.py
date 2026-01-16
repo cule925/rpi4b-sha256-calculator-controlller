@@ -1,25 +1,17 @@
 from smbus2 import SMBus, i2c_msg
-from enum import IntEnum
-from app_defines import WORKER_COUNT
 
 I2C_BUS = 1
 I2C_DATA_LEN_SEND = 38
 I2C_DATA_LEN_RECV = 5
 
-# Set I2C slave addresses for each worker
-class I2CSlaveAddress(IntEnum):
-    SLAVE_ADDR_1 = 0x08
-    SLAVE_ADDR_2 = 0x09
-
-assert len(I2CSlaveAddress) == WORKER_COUNT
-
 class WorkerCommI2C():
-    
-    def __init__(self):
+
+    def __init__(self, devices):
+        self.devices = devices
         self.bus = SMBus(I2C_BUS)
 
-        # Get tuple of all I2C slave address enum values
-        self.i2c_addresses = tuple(e.value for e in I2CSlaveAddress)
+        # Get tuple of all I2C slave addresses from devices
+        self.i2c_addresses = tuple(device.i2c_address for device in devices)
 
         print("Worker communication via I2C initialized!")
 

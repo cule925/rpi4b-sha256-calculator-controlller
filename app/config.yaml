@@ -1,0 +1,9 @@
+device_1:
+  event_device: "/dev/input/event0"
+  input_offset: 0x00000000
+  i2c_address: 0x08
+
+device_2:
+  event_device: "/dev/input/event1"
+  input_offset: 0x00010000
+  i2c_address: 0x09
