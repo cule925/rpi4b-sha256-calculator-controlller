@@ -20,7 +20,9 @@ case "$1" in
         apt install python3-evdev python3-smbus2
         ;;
     1)
-        echo "Mode SPI master - not implemented"
+        echo "Mode SPI master"
+        cp spi_master/config.txt /boot/firmware/config.txt
+        apt install python3-spidev
         ;;
     *)
         echo "Usage: $0 <0|1>"

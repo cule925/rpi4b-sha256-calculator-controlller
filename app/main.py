@@ -14,7 +14,6 @@ def parse_cmdline():
         index = sys.argv.index("--comm-mode")
         try:
             comm_mode = int(sys.argv[index + 1])
-            print(comm_mode)
         except (IndexError, ValueError):
             print("Usage: main.py --comm-mode <0|1>")
             sys.exit(1)
@@ -26,7 +25,6 @@ def main():
     comm_mode = parse_cmdline()
 
     print("Starting app ...")
-    print(comm_mode)
     app_manager = AppManager(comm_mode)
     puzzle_generator_thread_id = threading.Thread(target = app_threads.puzzle_generator_thread, args = (app_manager,))
 

@@ -1,5 +1,5 @@
 from app_hasher import Hasher
-from app_worker_comm import WorkerCommI2C
+from app_worker_comm import WorkerCommI2C, WorkerCommSPI
 from app_interrupt_event import InterruptEvent
 from app_config import AppConfig
 import sys
@@ -19,8 +19,8 @@ class AppManager():
             print("Communication mode I2C.")
             self.worker_comm = WorkerCommI2C(self.config.devices)
         elif self.comm_mode == 1:
-            print("Communication mode SPI not yet supported!")
-            sys.exit(1)
+            print("Communication mode SPI.")
+            self.worker_comm = WorkerCommSPI(self.config.devices)
         else:
             print("Invalid communication mode! Exiting ...")
             sys.exit(1)
