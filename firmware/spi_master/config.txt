@@ -32,7 +32,7 @@ disable_overscan=1
 arm_boost=1
 
 # Enable SPI-0 with 2 chip selects
-# MISO GPIO 9, MOSI GPIO 10, SCLK GPIO 11, CS0 GPIO 7, CS1 GPIO 8
+# MISO GPIO 9, MOSI GPIO 10, SCLK GPIO 11, CS0 GPIO 8, CS1 GPIO 7
 dtoverlay=spi0-2cs
 
 # Set GPIO 25 and GPIO 24 as button inputs (interrupt pins)
